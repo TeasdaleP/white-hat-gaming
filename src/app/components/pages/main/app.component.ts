@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { getGames } from 'src/app/ngrx/games/games.actions';
+import { getJackpot } from 'src/app/ngrx/jackpot/jackpot.actions';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'white-hat-gaming';
+export class AppComponent implements OnInit {
+  
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    
+    this.store.dispatch(getGames());
+    this.store.dispatch(getJackpot());
+  }
 }
