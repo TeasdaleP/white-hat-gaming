@@ -15,6 +15,5 @@ export const initialState: GameState = {
 
 export const gamesReducer = createReducer(
     initialState,
-    
     on(GamesActions.getGamesSuccess, (state, { payload }) => ({ data: payload, total: payload.length })),
 );

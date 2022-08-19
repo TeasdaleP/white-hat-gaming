@@ -15,6 +15,5 @@ export const initialState: JackpotState = {
 
 export const jackpotReducer = createReducer(
     initialState,
-    
     on(JackpotActions.getJackpotSuccess, (state, { payload }) => ({ data: payload, total: payload.length })),
 );
