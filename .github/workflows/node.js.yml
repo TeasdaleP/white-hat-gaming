@@ -21,4 +21,9 @@ jobs:
           node-version: 16.x
 
       - name: npm install and npm run build
-        run: npm run build:ci
+        run: | 
+          npm run build
+      
+      - name: npm run test:headless
+        run: |
+          npm run test:headless
