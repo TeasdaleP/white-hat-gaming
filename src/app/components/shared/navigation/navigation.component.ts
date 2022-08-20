@@ -17,6 +17,8 @@ export class NavigationComponent implements OnInit {
     ngOnInit(): void {}
 
     public handleSelection(selection: IdName) {
-        this.selection.emit(selection);
+        if(selection.id !== this.selected?.id) {
+            this.selection.emit(selection);
+        }
     }
 }

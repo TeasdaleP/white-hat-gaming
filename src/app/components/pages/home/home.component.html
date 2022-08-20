@@ -1,8 +1,9 @@
 <ng-container *ngIf="loading else Loaded">
-    <mat-progress-spinner></mat-progress-spinner>
+    <div class="spinner spinner-central">
+        <mat-spinner></mat-spinner>
+    </div>
 </ng-container>
 <ng-template #Loaded>
     <app-navigation [navigation]="navigation" [selected]="category$ | async" (selection)="handleCategorySelection($event)"></app-navigation>
-    <br />
     <p>{{ (games$ | async) | json }}</p>
 </ng-template>

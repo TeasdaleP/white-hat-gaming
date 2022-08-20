@@ -8,6 +8,7 @@ import { IdName, NAVIGATION } from "src/app/helpers/navigation";
 
 import * as JackpotStore from 'src/app/ngrx/jackpot';
 import * as GamesStore from 'src/app/ngrx/games';
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-home',
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     private destroyed$: ReplaySubject<void> = new ReplaySubject();
 
-    constructor(private store: Store, private actions: Actions) {
+    constructor(private store: Store, private actions: Actions, private router: Router) {
         this.games$ = this.store.select(GamesStore.selectGames).pipe(takeUntil(this.destroyed$));
         this.jackpots$ = this.store.select(JackpotStore.selectJackpot).pipe(takeUntil(this.destroyed$));
         this.category$ = this.store.select(GamesStore.selectCateogry).pipe(takeUntil(this.destroyed$));
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
 
         this.actions.pipe(ofType(GamesStore.getGamesFailure, JackpotStore.getJackpotFailure)).subscribe(() => {
-            // route to error page
+            this.router.navigate(['error']);
         });
     }
 

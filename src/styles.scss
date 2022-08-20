@@ -35,6 +35,11 @@ $white-hat-gaming-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
+$dark: #373737;
+$light: #FCFCFC;
+$white: #FFFFFF;
+$green: #8DC63F;
+
 html, body { 
   height: 100%;
 }
@@ -42,9 +47,5 @@ html, body {
 body { 
   margin: 0;
   font-family: 'Nunito', 'Roboto', "Helvetica Neue", sans-serif;
+  background-color: $light;
 }
-
-$dark: #373737;
-$light: #FCFCFC;
-$white: #FFFFFF;
-$green: #8DC63F;
