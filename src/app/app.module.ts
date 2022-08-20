@@ -2,15 +2,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/pages/main/app.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from './ngrx';
+import { EffectsModule } from '@ngrx/effects';
+import { GamesEffects } from './ngrx/games/games.effects';
+import { JackpotEffects } from './ngrx/jackpot/jackpot.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([GamesEffects, JackpotEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
