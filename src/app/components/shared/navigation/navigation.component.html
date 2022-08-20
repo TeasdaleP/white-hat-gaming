@@ -1,0 +1,7 @@
+<div class="navigation">
+    <div class="navigation-inner">
+        <ng-container *ngFor="let nav of navigation">
+            <button class="navigation-button" (click)="handleSelection(nav)" [class.navigation-selected]="selected?.id === nav?.id">{{ nav.name }}</button>
+        </ng-container>
+    </div>
+</div>

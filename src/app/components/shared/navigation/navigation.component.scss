@@ -1,0 +1,53 @@
+@import 'src/styles.scss';
+
+.navigation {
+    display: flex;
+    width: 100%;
+
+    &-toggle {
+        visibility: hidden;
+    }
+
+    &-inner {
+        flex: 100%;
+        background-color: $dark;
+        justify-content: space-between;
+    }
+
+    &-button {
+        color: $white;
+        font-family: Nunito;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 30px;
+        background-color: $dark;
+        padding: 15px 5px 15px 5px;
+        outline: none;
+        border: 0;
+
+        &:hover {
+            background-color: $green;
+        }
+    };
+
+    &-selected {
+        background-color: $green;
+
+        &:hover {
+            background-color: $light;
+            color: $dark;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .navigation {
+        &-toggle {
+            visibility: visible;
+        }
+
+        &-button {
+            visibility: hidden;
+        }
+    }
+}

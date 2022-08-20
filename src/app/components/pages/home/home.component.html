@@ -1,0 +1,8 @@
+<ng-container *ngIf="loading else Loaded">
+    <mat-progress-spinner></mat-progress-spinner>
+</ng-container>
+<ng-template #Loaded>
+    <app-navigation [navigation]="navigation" [selected]="category$ | async" (selection)="handleCategorySelection($event)"></app-navigation>
+    <br />
+    <p>{{ (games$ | async) | json }}</p>
+</ng-template>

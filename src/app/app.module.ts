@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { GamesEffects } from './ngrx/games/games.effects';
 import { JackpotEffects } from './ngrx/jackpot/jackpot.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([GamesEffects, JackpotEffects])
+    EffectsModule.forRoot([GamesEffects, JackpotEffects]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
