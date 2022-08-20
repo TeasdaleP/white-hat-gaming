@@ -1,0 +1,34 @@
+@import 'src/styles.scss';
+
+.error {
+    display: flex;
+    height: 100%;
+
+    &-spaced {
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-inner {
+        border-radius: 20px;
+        padding: 20px;
+        border: 2px solid $dark;
+    }
+
+    &-inline {
+        color: $dark;
+        font-weight: normal;
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: bolder;
+        color: $green;
+    }
+
+    h3 {
+        font-size: 20px;
+        line-height: 40px;
+        font-weight: normal;
+    }
+}

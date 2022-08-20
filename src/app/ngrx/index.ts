@@ -9,7 +9,7 @@ export interface State {
 
 export const reducers: ActionReducerMap<State> = {
     jackpot: jackpotReducer,
-    games: gamesReducer
+    games: gamesReducer,
 }
 
 export const metaReducers: MetaReducer<any>[] = [];

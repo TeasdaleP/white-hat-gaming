@@ -1,0 +1,17 @@
+<ng-container *ngIf="loading else Loaded">
+    <div class="spinner spinner-central">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-container>
+<ng-template #Loaded>
+    <app-navigation [navigation]="navigation" [selected]="category$ | async" (selection)="handleCategorySelection($event)"></app-navigation>
+    <div class="home">
+        <div class="home-container">
+            <div class="home-item" *ngFor="let game of games$ | async">
+                <!-- separate into a different component -->
+                <img class="home-image" [src]="game.image" [alt]="game.name" />
+                <!-- separate into a different component -->
+            </div>
+        </div>
+    </div>
+</ng-template>
