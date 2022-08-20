@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "clean": "rimraf ./dist",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "build:prod": "ng build --prod",
     "test": "ng test",
+    "lint": "ng lint",
     "test:coverage": "ng test --no-watch --code-coverage",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
-    "build:ci": "npm run test:headless && npm run build"
+    "build:ci": "npm run clean && npm run test:headless && npm run build",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
