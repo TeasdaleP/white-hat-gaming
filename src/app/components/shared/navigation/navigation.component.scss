@@ -42,13 +42,24 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .navigation {
+
+    .navigation {    
+        &-spaced {
+            justify-content: flex-start;
+        }
+
         &-toggle {
             visibility: visible;
+            color: $white;
+            padding: 15px;
         }
 
         &-button {
-            visibility: hidden;
+            display: none;
         }
+    }
+
+    .mat-icon {
+        transform: scale(2);
     }
 }

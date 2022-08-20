@@ -14,3 +14,22 @@
 .spinner ::ng-deep circle {
     stroke: $green;
 }
+
+.home {
+    padding: 8% 5% 8% 5%;
+
+    &-container {
+        display: flex;
+        flex-flow: column wrap;
+        width: 20%;
+        // max-height: 5000px;
+    }
+
+    &-item {
+        flex: 1;
+    }
+
+    &-image {
+        border-radius: 20px;
+    }
+}
