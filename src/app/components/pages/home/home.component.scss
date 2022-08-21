@@ -4,7 +4,7 @@
     display: flex;
     color: $green;
     height: 100%;
-    
+
     &-central {
         justify-content: center;
         align-items: center;
@@ -16,20 +16,40 @@
 }
 
 .home {
-    padding: 8% 5% 8% 5%;
+    &-inner {
+        padding: 100px 75px 100px 75px;
+    }
 
     &-container {
         display: flex;
-        flex-flow: column wrap;
-        width: 20%;
-        // max-height: 5000px;
+        flex-wrap: wrap;
     }
 
     &-item {
-        flex: 1;
+        flex: 1 1 20%;
+        padding: 5px 10px 15px 10px;
+        align-items: center;
+        min-width: 300px;
+        max-width: 300px;
     }
+}
 
-    &-image {
-        border-radius: 20px;
+@media screen and (max-width: 768px) {
+    .home {
+        &-container {
+            display: flex;
+        }
+
+        &-inner {
+            padding: 40px 10px 40px 10px;
+        }
+
+        &-item {
+            width: 100%;
+            padding: 0 0 15px 0;
+            flex-grow:1;
+            min-width: none;
+            max-width: none;
+        }
     }
 }

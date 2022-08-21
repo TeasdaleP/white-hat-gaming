@@ -1,7 +1,11 @@
-<div class="navigation navigation-spaced navigation-fixed">
-    <ng-container *ngFor="let nav of navigation">
-        <button class="navigation-button" (click)="handleSelection(nav)" [class.navigation-selected]="selected?.id === nav?.id">
-            {{ nav.name }}
-        </button>
-    </ng-container>
-</div>
+<nav class="nav">
+    <ul class="nav-links">
+        <input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" class="nav-hamburger">&#9776;</label>
+        <div class="nav-menu">
+            <li class="nav-item" *ngFor="let nav of navigation" [class.nav-selected]="selected?.id === nav?.id">
+                <a (click)="handleSelection(nav)">{{ nav.name }}</a>
+            </li> 
+        </div>
+    </ul>
+</nav>

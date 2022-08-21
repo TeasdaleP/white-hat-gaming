@@ -10,3 +10,5 @@ export const selectGames = createSelector(selectFeature, (state: GameState): Arr
 export const selectGameTotal = createSelector(selectFeature, (state: GameState): number => state.total );
 
 export const selectCateogry = createSelector(selectFeature, (state: GameState): IdName | null => state.category );
+
+export const selectedGame = createSelector(selectFeature, (state: GameState): Game | null => state.selected);

@@ -1,0 +1,96 @@
+@import 'src/styles.scss';
+
+.tile {
+    &-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    &-image {
+        border-radius: 20px;
+        display: block;
+        width: 100%;
+        height: auto;
+
+        &:hover {
+            filter: drop-shadow(2px 2px 2px $dark);
+        }
+    }
+
+    &-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+        border-radius: 20px;
+        background-color: $dark;
+        cursor: pointer;
+    }
+
+    &-title {
+        color: $light;
+        font-size: 16px;
+        font-weight: 600;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    &-icon {
+        color: $green;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+
+.tile-icon .mat-icon {
+    transform: scale(3);
+}
+
+.tile-container:hover .tile-overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.ribbon {
+    width: 250px;
+    background: $green;
+    position: absolute;
+    top: 25px;
+    left: -50px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: $light;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    overflow: hidden;
+    font-weight: 600;
+
+    &-shadow {
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    }
+
+    &-right {
+        top:30px;
+        right: -70px;
+        left: auto;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(46deg);
+        overflow: hidden;
+    }
+}

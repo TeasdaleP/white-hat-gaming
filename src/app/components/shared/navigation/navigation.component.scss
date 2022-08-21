@@ -1,35 +1,55 @@
 @import 'src/styles.scss';
 
-.navigation {
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.nav {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: $dark;
+    color: $white;
 
-    &-fixed {
-        top: 0;
+    &-links {
         width: 100%;
-        position: fixed;
-        overflow: hidden;
     }
 
-    &-spaced {
-        justify-content: space-around;
+    &-hamburger {
+        display: none;
+        font-size: 24px;
+        user-select: none;
     }
 
-    &-button {
-        color: $white;
+    &-menu {
+        display: flex;
+        gap: 16px;
+        font-size: 18px;
+    }
+
+    &-item {
         font-family: Nunito;
         font-weight: 400;
         font-size: 24px;
         line-height: 30px;
         background-color: $dark;
         padding: 15px 10px 15px 10px;
+        color: $white;
         outline: none;
         border: 0;
 
         &:hover {
-            background-color: $green;
+            transition: 0.3s ease;
         }
-    };
+    }
 
     &-selected {
         background-color: $green;
@@ -39,27 +59,47 @@
             color: $dark;
         }
     }
+
 }
 
-@media only screen and (max-width: 768px) {
+input[type=checkbox] {
+    display: none;
+}
 
-    .navigation {    
-        &-spaced {
-            justify-content: flex-start;
+@media (max-width: 768px) {
+    .nav {
+        &-links {
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
-        &-toggle {
-            visibility: visible;
-            color: $white;
-            padding: 15px;
+        &-hamburger {
+            display: block;
         }
 
-        &-button {
+        &-menu {
             display: none;
+            position: absolute;
+            background-color: $dark;
+            right: 0;
+            left: 0;
+            text-align: center;
+            padding: 16px 0;
+            height: 500px;
+            z-index: 99;
+
+            &:hover {
+                display: inline-block;
+                transition: 0.3s ease;
+            }
+        }
+
+        &-item {
+
         }
     }
 
-    .mat-icon {
-        transform: scale(2);
+    input[type=checkbox]:checked ~ .nav-menu{
+        display: block;
     }
 }
