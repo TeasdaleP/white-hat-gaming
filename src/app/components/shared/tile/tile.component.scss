@@ -3,6 +3,7 @@
 .tile {
     &-container {
         position: relative;
+        overflow: hidden;
     }
 
     &-image {
@@ -66,84 +67,30 @@
 }
 
 .ribbon {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
+    width: 250px;
+    background: $green;
     position: absolute;
-    z-index: 75;
+    top: 25px;
+    left: -50px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: $light;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    overflow: hidden;
+    font-weight: 600;
 
-    &-left {
-        top: -10px;
-        left: -10px;
-
-        &::before {
-            top: 0;
-            right: 0;
-        }
-
-        &::after {
-            bottom: 0;
-            left: 0;
-        }
-
-        &::before, &::after {
-            border-top-color: transparent;
-            border-left-color: transparent;
-        }
-
-        span {
-            right: -25px;
-            top: 40px;
-            transform: rotate(-45deg);
-        }
+    &-shadow {
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
     }
 
     &-right {
-        top: -10px;
-        right: -10px;
-
-        &::before {
-            top: 0;
-            left: 0;
-        }
-
-        &::after {
-            bottom: 0;
-            right: 0;
-        }
-
-        &::before, &::after {
-            border-top-color: transparent;
-            border-left-color: transparent;
-        }
-
-        span {
-            left: -25px;
-            top: 40px;
-            transform: rotate(45deg);
-        }
+        top:30px;
+        right: -70px;
+        left: auto;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(46deg);
+        overflow: hidden;
     }
-}
-
-.ribbon::before, .ribbon::after {
-    position: absolute;
-    z-index: -1;
-    content: '';
-    display: block;
-    border: 5px solid $green-dark;
-}
-
-.ribbon span {
-    position: absolute;
-    display: block;
-    width: 225px;
-    padding: 10px 0;
-    background-color: $green;
-    box-shadow: 0 5px 10px rgba(0,0,0,.1);
-    text-shadow: 0 1px 1px rgba(0,0,0,.2);
-    text-align: center;
-    font-size: medium;
-    font-weight: 600;
-    color: $light;
-
 }

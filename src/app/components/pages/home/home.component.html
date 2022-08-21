@@ -5,7 +5,7 @@
 </ng-container>
 <ng-template #Loaded>
     <app-navigation [navigation]="navigation" [selected]="category$ | async" (selection)="handleCategorySelection($event)"></app-navigation>
-    <div class="home">
+    <div class="home home-inner">
         <div class="home-container">
             <ng-container *ngFor="let game of games$ | async">
                 <div class="home-item" *ngIf="matchedCategory(game)">

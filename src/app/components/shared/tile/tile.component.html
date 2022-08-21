@@ -1,6 +1,6 @@
 <div class="tile-container" (click)="handleSubmit()">
-    <div class="ribbon ribbon-right" *ngIf="needRibbon()">
-        <span>{{ ribbon | uppercase }}</span>
+    <div class="ribbon ribbon-right ribbon-shadow" *ngIf="needRibbon()">
+        {{ ribbon | uppercase }}
     </div>
     <img class="tile-image" [src]="game?.image" [alt]="game?.name"/>
     <div class="tile-overlay">
