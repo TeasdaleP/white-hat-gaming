@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { IdName } from "src/app/helpers/navigation";
 
 @Component({
@@ -10,6 +11,8 @@ export class NavigationComponent implements OnInit {
     @Input() public navigation: Array<IdName> | undefined;
     @Input() public selected!: IdName | null;
 
+    public toggle$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
     @Output() public selection: EventEmitter<IdName> = new EventEmitter();
 
     constructor() {}
@@ -20,5 +23,9 @@ export class NavigationComponent implements OnInit {
         if(selection.id !== this.selected?.id) {
             this.selection.emit(selection);
         }
+    }
+
+    public toggleMenu(): void {
+        this.toggle$.next(!this.toggle$.getValue());
     }
 }

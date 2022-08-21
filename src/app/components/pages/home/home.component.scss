@@ -4,7 +4,7 @@
     display: flex;
     color: $green;
     height: 100%;
-    
+
     &-central {
         justify-content: center;
         align-items: center;
@@ -28,5 +28,28 @@
     &-item {
         flex: 1 1 20%;
         padding: 5px 10px 15px 10px;
+        align-items: center;
+        min-width: 300px;
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        &-container {
+            display: flex;
+        }
+
+        &-inner {
+            padding: 40px 10px 40px 10px;
+        }
+
+        &-item {
+            width: 100%;
+            padding: 0 0 15px 0;
+            flex-grow:1;
+            min-width: none;
+            max-width: none;
+        }
     }
 }
