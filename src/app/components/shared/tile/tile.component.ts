@@ -18,24 +18,13 @@ export class TileComponent implements OnInit {
 
     @Output() public selection: EventEmitter<Game> = new EventEmitter();
 
-    constructor() {}
+    constructor() {
+        
+    }
 
     ngOnInit(): void {
         this.filteredJackpot$ = this.jackpots$.pipe(map((jackpot: Jackpot[]) => jackpot.find((j) => j.game === this.game?.id)));
-
-        this.filteredJackpot$.subscribe((amount) => {
-            console.log(amount);
-        });
-
-        if(this.needRibbon()) {
-            if(this.game?.categories.includes(Ribbon.Top) && this.game.categories.includes(Ribbon.New)) {
-                this.ribbon = `${Ribbon.Top} & ${Ribbon.New}`;
-            } else if (this.game?.categories.includes(Ribbon.Top)) {
-                this.ribbon = Ribbon.Top;
-            } else if (this.game?.categories.includes(Ribbon.New)) {
-                this.ribbon = Ribbon.New;
-            } 
-        }
+        this.getRibbonContent();
     }
 
     public needRibbon(): boolean | undefined {
@@ -45,6 +34,18 @@ export class TileComponent implements OnInit {
     public handleSubmit(): void {
         if(this.game) {
             this.selection.emit(this.game);
+        }
+    }
+
+    private getRibbonContent(): void {
+        if(this.needRibbon()) {
+            if(this.game?.categories.includes(Ribbon.Top) && this.game.categories.includes(Ribbon.New)) {
+                this.ribbon = `${Ribbon.Top} & ${Ribbon.New}`;
+            } else if (this.game?.categories.includes(Ribbon.Top)) {
+                this.ribbon = Ribbon.Top;
+            } else if (this.game?.categories.includes(Ribbon.New)) {
+                this.ribbon = Ribbon.New;
+            } 
         }
     }
 }
