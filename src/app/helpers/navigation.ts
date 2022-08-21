@@ -6,14 +6,14 @@ export interface IdName {
 }
 
 export const NAVIGATION = [
-    { id: uuidv4(), name: 'Top Games' },
-    { id: uuidv4(), name: 'New Games' },
-    { id: uuidv4(), name: 'Slots' },
-    { id: uuidv4(), name: 'Jackpots' },
-    { id: uuidv4(), name: 'Live' },
-    { id: uuidv4(), name: 'Blackjack' },
-    { id: uuidv4(), name: 'Roulette' },
-    { id: uuidv4(), name: 'Table' },
-    { id: uuidv4(), name: 'Poker' },
-    { id: uuidv4(), name: 'Other' }
+    { id: 'top', name: 'Top Games' },
+    { id: 'new', name: 'New Games' },
+    { id: 'slots', name: 'Slots' },
+    { id: 'jackpot', name: 'Jackpots' },
+    { id: 'live', name: 'Live' },
+    { id: 'blackjack', name: 'Blackjack' },
+    { id: 'roulette', name: 'Roulette' },
+    { id: 'table', name: 'Table' },
+    { id: 'poker', name: 'Poker' },
+    { id: 'other', name: 'Other' }
 ]

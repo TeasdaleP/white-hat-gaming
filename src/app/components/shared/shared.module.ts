@@ -7,9 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 
 // -- Components
 import { NavigationComponent } from "./navigation/navigation.component";
+import { TileComponent } from "./tile/tile.component";
 
 const SHARED_COMPONENTS = [
-    NavigationComponent
+    NavigationComponent,
+    TileComponent
 ];
 
 @NgModule({

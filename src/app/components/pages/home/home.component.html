@@ -7,11 +7,11 @@
     <app-navigation [navigation]="navigation" [selected]="category$ | async" (selection)="handleCategorySelection($event)"></app-navigation>
     <div class="home">
         <div class="home-container">
-            <div class="home-item" *ngFor="let game of games$ | async">
-                <!-- separate into a different component -->
-                <img class="home-image" [src]="game.image" [alt]="game.name" />
-                <!-- separate into a different component -->
-            </div>
+            <ng-container *ngFor="let game of games$ | async">
+                <div class="home-item" *ngIf="matchedCategory(game)">
+                    <app-tile [game]="game"></app-tile>
+                </div>
+            </ng-container>
         </div>
     </div>
 </ng-template>

@@ -3,6 +3,7 @@
 .navigation {
     display: flex;
     background-color: $dark;
+    z-index: 999;
 
     &-fixed {
         top: 0;
@@ -16,6 +17,7 @@
     }
 
     &-button {
+        cursor: pointer;
         color: $white;
         font-family: Nunito;
         font-weight: 400;

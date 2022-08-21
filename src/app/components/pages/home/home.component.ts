@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
 import { debounceTime, Observable, ReplaySubject, take, takeUntil } from "rxjs";
 import { Actions, ofType } from "@ngrx/effects";
 import { Game } from "src/app/ngrx/games/games.model";
 import { Jackpot } from "src/app/ngrx/jackpot/jackpot.model";
 import { IdName, NAVIGATION } from "src/app/helpers/navigation";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
 
 import * as JackpotStore from 'src/app/ngrx/jackpot';
 import * as GamesStore from 'src/app/ngrx/games';
-import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-home',
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     public loading: boolean = true;
     public navigation: Array<IdName> = NAVIGATION;
-    public selected: IdName = NAVIGATION[5];
+    public category: IdName | null | undefined;
 
     private destroyed$: ReplaySubject<void> = new ReplaySubject();
 
@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.actions.pipe(ofType(GamesStore.getGamesFailure, JackpotStore.getJackpotFailure)).subscribe(() => {
             this.router.navigate(['error']);
         });
+
+        this.category$.subscribe((category: IdName | null) => {
+            this.category = category;
+        });
     }
 
     ngOnDestroy(): void {
@@ -51,5 +55,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     public handleCategorySelection(category: IdName): void {
         this.store.dispatch(GamesStore.updateCateogry({ payload: category }));
+    }
+
+    public matchedCategory(game: Game): boolean | undefined {
+        return game?.categories.includes(this.category ? this.category.id : '');
     }
 }
