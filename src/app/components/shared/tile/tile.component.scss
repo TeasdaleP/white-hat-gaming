@@ -17,6 +17,19 @@
         }
     }
 
+    &-jackpot {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 10%;
+        width: 100%;
+        padding: 10px 0px 10px 0px;
+        background-color: $dark;
+        border-radius: 0px 0px 20px 20px;
+        opacity: 0.75;
+    }
+
     &-overlay {
         position: absolute;
         top: 0;
@@ -43,6 +56,7 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         text-align: center;
+        opacity: 1;
     }
 
     &-icon {
@@ -80,6 +94,7 @@
     -webkit-transform: rotate(-45deg);
     overflow: hidden;
     font-weight: 600;
+    z-index: 90;
 
     &-shadow {
         box-shadow: 0 0 3px rgba(0, 0, 0, .3);

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { map, Observable } from "rxjs";
 import { Ribbon } from "src/app/helpers/ribbon.enum";
 import { Game } from "src/app/ngrx/games";
+import { Jackpot } from "src/app/ngrx/jackpot";
 
 @Component({
     selector: 'app-tile',
@@ -9,6 +11,9 @@ import { Game } from "src/app/ngrx/games";
 })
 export class TileComponent implements OnInit {
     @Input() public game!: Game | null;
+    @Input() public jackpots$!: Observable<Array<Jackpot>>;
+
+    public filteredJackpot$!: Observable<Jackpot | undefined>;
     public ribbon: string | undefined;
 
     @Output() public selection: EventEmitter<Game> = new EventEmitter();
@@ -16,6 +21,12 @@ export class TileComponent implements OnInit {
     constructor() {}
 
     ngOnInit(): void {
+        this.filteredJackpot$ = this.jackpots$.pipe(map((jackpot: Jackpot[]) => jackpot.find((j) => j.game === this.game?.id)));
+
+        this.filteredJackpot$.subscribe((amount) => {
+            console.log(amount);
+        });
+
         if(this.needRibbon()) {
             if(this.game?.categories.includes(Ribbon.Top) && this.game.categories.includes(Ribbon.New)) {
                 this.ribbon = `${Ribbon.Top} & ${Ribbon.New}`;
