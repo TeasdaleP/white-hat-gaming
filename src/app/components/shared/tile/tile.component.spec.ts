@@ -1,13 +1,14 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { TileComponent } from "./tile.component";
 import { Game } from "src/app/ngrx/games";
+import { Jackpot } from "src/app/ngrx/jackpot";
 import { Ribbon } from "src/app/helpers/ribbon.enum";
+import { Observable, of } from "rxjs";
 
 import { v4 as uuidv4 } from 'uuid';
 
 describe('Tile Component', () => {
     let component: TileComponent;
-    let fixture: ComponentFixture<TileComponent>;
 
     let mockGame: Game = {
         categories: ['top', 'new', 'slots'],
@@ -16,19 +17,13 @@ describe('Tile Component', () => {
         id: uuidv4()
     }
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [TileComponent],
-            providers: [
-
-            ]
-        }).compileComponents();
-    });
+    let mockJackpot: Jackpot = {
+        game: 'game',
+        amount: 123456
+    }
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TileComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
+        component = new TileComponent();
     });
 
     it('Should create', () => {
@@ -36,6 +31,10 @@ describe('Tile Component', () => {
     });
 
     describe('ngOnInit', () => {
+
+        beforeEach(() => {
+            component.jackpots$ = of([mockJackpot]);
+        });
 
         it('Should get top and new for ribbon', () => {
             component.game = mockGame;

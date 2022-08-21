@@ -7,4 +7,7 @@
         <mat-icon class="tile-icon">play_arrow</mat-icon>
         <div class="tile-title">{{ game?.name }}</div>
     </div>
+    <div class="tile-jackpot" *ngIf="(filteredJackpot$ | async)">
+        <div class="tile-title">{{ (filteredJackpot$ | async)?.amount | currency: 'GBP' }}</div>
+    </div>
 </div>

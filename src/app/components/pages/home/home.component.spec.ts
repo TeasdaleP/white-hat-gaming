@@ -6,9 +6,6 @@ import { Observable } from "rxjs";
 import { Action } from "@ngrx/store";
 import { Game } from "src/app/ngrx/games";
 
-import * as JackpotStore from 'src/app/ngrx/jackpot';
-import * as GamesStore from 'src/app/ngrx/games';
-
 import { v4 as uuidv4 } from 'uuid';
 import { IdName } from "src/app/helpers/navigation";
 
@@ -69,4 +66,19 @@ describe('Home Component', () => {
         component.handleCategorySelection(mockCategory);
         expect(store.dispatch).toHaveBeenCalled();
     });
+
+    it('Should be able to match other category', () => {
+        const matchedGame: Game = {
+            categories: ['new', 'ball'],
+            name: 'Best Game',
+            image: 'http://image.com',
+            id: uuidv4()
+        }
+        component.category = {
+            id: 'other',
+            name: 'other'
+        }
+        const match = component.matchedOther(matchedGame);
+        expect(match).toBeTruthy();
+    })
 });

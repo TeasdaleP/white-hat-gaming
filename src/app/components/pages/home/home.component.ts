@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { debounceTime, Observable, ReplaySubject, take, takeUntil } from "rxjs";
+import { combineLatest, debounceTime, Observable, ReplaySubject, take, takeUntil } from "rxjs";
 import { Actions, ofType } from "@ngrx/effects";
 import { Game } from "src/app/ngrx/games/games.model";
 import { Jackpot } from "src/app/ngrx/jackpot/jackpot.model";
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.store.dispatch(GamesStore.getGames());
 
-        this.actions.pipe(ofType(GamesStore.getGamesSuccess, JackpotStore.getJackpotSuccess), debounceTime(1000), takeUntil(this.destroyed$)).subscribe(() => {
+        this.actions.pipe(ofType(GamesStore.getGamesSuccess), debounceTime(1000), takeUntil(this.destroyed$)).subscribe(() => {
             this.loading = !this.loading;
         });
 
@@ -45,6 +45,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         this.category$.subscribe((category: IdName | null) => {
             this.category = category;
+        });
+
+        this.jackpots$.pipe(debounceTime(3000)).subscribe(() => {
+            this.store.dispatch(JackpotStore.getJackpot());
         });
     }
 
@@ -63,5 +67,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     public matchedCategory(game: Game): boolean | undefined {
         return game?.categories.includes(this.category ? this.category.id : '');
+    }
+
+    public matchedOther(game: Game): boolean | undefined {
+        return this.category?.id === 'other' ? this.otherCategories(game.categories) : false;
+    }
+
+    public otherCategories(arr: Array<string>): boolean {
+        return arr.includes('ball') || arr.includes('fun') || arr.includes('virtual');
     }
 }
