@@ -7,7 +7,7 @@ import { Game } from '../ngrx/games/games.model';
 import { v4 as uuidv4 } from 'uuid';
 
 
-describe('Jackpot Service', () => {
+describe('Games Service', () => {
     let service: GamesService;
 
     const response: Game[] = [

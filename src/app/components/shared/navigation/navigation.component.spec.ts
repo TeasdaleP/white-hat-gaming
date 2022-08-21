@@ -49,5 +49,5 @@ describe('Navigation Component', () => {
         component.handleSelection(mockNavigation[0]);
         expect(component.selection.emit).toHaveBeenCalled();
         expect(component.selection.emit).toHaveBeenCalledWith(mockNavigation[0]);
-    })
+    });
 });
