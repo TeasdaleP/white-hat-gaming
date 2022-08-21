@@ -64,4 +64,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     public matchedCategory(game: Game): boolean | undefined {
         return game?.categories.includes(this.category ? this.category.id : '');
     }
+
+    public matchedOther(game: Game): boolean | undefined {
+        return this.category?.id === 'other' ? this.otherCategories(game.categories) : false;
+    }
+
+    public otherCategories(arr: Array<string>): boolean {
+        return arr.includes('ball') || arr.includes('fun') || arr.includes('virtual');
+    }
 }
