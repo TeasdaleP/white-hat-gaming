@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Ribbon } from "src/app/helpers/ribbon.enum";
 import { Game } from "src/app/ngrx/games";
 
@@ -9,7 +9,9 @@ import { Game } from "src/app/ngrx/games";
 })
 export class TileComponent implements OnInit {
     @Input() public game!: Game | null;
-    public ribbon: string | undefined
+    public ribbon: string | undefined;
+
+    @Output() public selection: EventEmitter<Game> = new EventEmitter();
 
     constructor() {}
 
@@ -27,5 +29,11 @@ export class TileComponent implements OnInit {
 
     public needRibbon(): boolean | undefined {
         return this.game?.categories.includes(Ribbon.Top) || this.game?.categories.includes(Ribbon.New);
+    }
+
+    public handleSubmit(): void {
+        if(this.game) {
+            this.selection.emit(this.game);
+        }
     }
 }

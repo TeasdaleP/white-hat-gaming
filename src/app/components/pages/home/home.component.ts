@@ -57,6 +57,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.store.dispatch(GamesStore.updateCateogry({ payload: category }));
     }
 
+    public handleGameSelection(game: Game): void {
+        this.store.dispatch(GamesStore.updateSelectedGame({ payload: game }));
+    }
+
     public matchedCategory(game: Game): boolean | undefined {
         return game?.categories.includes(this.category ? this.category.id : '');
     }

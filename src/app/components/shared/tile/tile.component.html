@@ -1,9 +1,10 @@
-<div class="tile-container">
+<div class="tile-container" (click)="handleSubmit()">
     <div class="ribbon ribbon-right" *ngIf="needRibbon()">
         <span>{{ ribbon | uppercase }}</span>
     </div>
     <img class="tile-image" [src]="game?.image" [alt]="game?.name"/>
     <div class="tile-overlay">
         <mat-icon class="tile-icon">play_arrow</mat-icon>
+        <div class="tile-title">{{ game?.name }}</div>
     </div>
 </div>

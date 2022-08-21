@@ -31,25 +31,38 @@
         cursor: pointer;
     }
 
-    &-icon {
-        color: $green;
-        font-size: 20px;
+    &-title {
+        color: $light;
+        font-size: 16px;
+        font-weight: 600;
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         text-align: center;
-
-        .mat-icon {
-            transform: scale(2);
-        }
     }
+
+    &-icon {
+        color: $green;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+
+.tile-icon .mat-icon {
+    transform: scale(3);
 }
 
 .tile-container:hover .tile-overlay {
     opacity: 1;
+    cursor: pointer;
 }
 
 .ribbon {

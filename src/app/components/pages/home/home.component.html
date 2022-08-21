@@ -9,7 +9,7 @@
         <div class="home-container">
             <ng-container *ngFor="let game of games$ | async">
                 <div class="home-item" *ngIf="matchedCategory(game)">
-                    <app-tile [game]="game"></app-tile>
+                    <app-tile [game]="game" (selection)="handleGameSelection($event)"></app-tile>
                 </div>
             </ng-container>
         </div>
